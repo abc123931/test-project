@@ -22,6 +22,7 @@ Resources:
   GetHelloWorld:
     Type: AWS::Serverless::Function
     Properties:
+      CodeUri: hello-world/
       Handler: main
       Runtime: go1.x
       Role:
