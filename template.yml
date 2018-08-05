@@ -34,3 +34,19 @@ Resources:
           Properties:
             Path: /
             Method: get
+  GetTestFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: testhandler/
+      Handler: main
+      Runtime: go1.x
+      FunctionName: get-test-handler
+      Role:
+        Fn::ImportValue:
+          !Join ['-', [!Ref 'ProjectId', !Ref 'AWS::Region', 'LambdaTrustRole']]
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /test
+            Method: get
